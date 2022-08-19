@@ -11,6 +11,12 @@
   align-items: center;
 }
 
+.cell img {
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+
 .board {
   width: calc(64px * 8);
   height: calc(64px * 8);
@@ -31,5 +37,16 @@
 }
 
 .white {
-  background-color: linen;
+  background-color:navajowhite;
+}
+
+.selected {
+  background-color: brown;
+}
+
+.available {
+  height: 12px;
+  width: 12px;
+  background-color: chartreuse;
+  border-radius: 50%;
 }

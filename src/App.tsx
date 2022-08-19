@@ -13,6 +13,7 @@ function App() {
   function restart() {
     const newBoard = new Board();
     newBoard.initialState();
+    newBoard.addFigure()
     setBoard(newBoard);
   }
   return (
