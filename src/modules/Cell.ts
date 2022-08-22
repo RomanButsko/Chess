@@ -38,10 +38,30 @@ export class Cell {
         return true
     }
     isEmptyHorizontal(target: Cell): boolean {
+        if (target.y !== this.y) return false
+
+        const max = Math.max(this.x, target.x)
+        const min = Math.min(this.x, target.x)
+        for (let x = min + 1; x < max; x++) {
+            if (!this.board.getCell(x, this.y).isEmpty()) {
+                return false
+            }
+        }
         return true;
     }
     isEmptyDiagonal(target: Cell): boolean{
+        const absX = Math.abs(target.y - this.y);
+        const absY = Math.abs(target.x - this.x);
+        if (absX !== absY) return false;
+
+        const dy = this.y < target.y ? 1 : -1;
+        const dx = this.x < target.x ? 1 : -1;
+
+        for (let i = 1; i < absY; i++) {
+            if (!this.board.getCell(this.x + dx * i, this.y + dy * i).isEmpty()) return false;
+        }
         return true;
+
     }
 
     setFigure(figure: Figure) {
